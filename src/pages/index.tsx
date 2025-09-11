@@ -128,7 +128,7 @@ export default function Home() {
   }
 
   const flipTo = (nextIndex: number) => {
-    if (isFlipping || poems.length === 0) return;
+    if (poems.length === 0) return;
     nextIndex = clamp(nextIndex, 0, poems.length - 1);
     if (nextIndex === pageIndex) return;
 

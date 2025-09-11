@@ -1,5 +1,5 @@
 # kali-o-kobita
-# কাব্য-পুস্তিকা (Kabyo Pustika) - Bengali Poetry Book
+# কালি ও কবিতা   - Bengali Poetry Book
 
 This is a Next.js application featuring a beautiful interactive Bengali poetry book with page-turning animations.
 

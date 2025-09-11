@@ -17,3 +17,4 @@ This is a Next.js application featuring a beautiful interactive Bengali poetry b
 ## Getting Started
 
 First, install the dependencies:
+

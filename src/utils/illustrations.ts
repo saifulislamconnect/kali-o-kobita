@@ -3,7 +3,6 @@
 export function makeIllustrationSVG(seed?: number): string {
   // Generate a random seed if none is provided
   const actualSeed = seed !== undefined ? seed : Math.floor(Math.random() * 10000);
-  console.log(`Using illustration seed: ${actualSeed}`);
   const r = Math.abs(seededRandom(actualSeed));
   const headOffset = 6 + Math.round(r * 14);
   const curve = 18 + Math.round(r * 48);

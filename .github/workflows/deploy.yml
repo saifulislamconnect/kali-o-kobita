@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write   # 👈 this is required
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest

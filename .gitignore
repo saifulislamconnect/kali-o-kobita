@@ -30,4 +30,3 @@ Homestead.json
 auth.json
 /.next/*
 /.idea/*
-/package-lock.json

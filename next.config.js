@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
     output: 'export',   // 👈 tells Next.js to generate static files
     images: {
         unoptimized: true, // GitHub Pages can't handle Next.js Image optimization

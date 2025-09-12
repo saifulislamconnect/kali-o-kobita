@@ -8,7 +8,7 @@ let userInteracted = false;
 let notificationShown = false;
 
 // Use both an external file (more reliable) and a base64 fallback
-const AUDIO_URL = '/sounds/page-turn.mp3'; // Add this file to your public directory
+const AUDIO_URL = (process.env.NODE_ENV === 'production' ? '/kali-o-kobita' : '') + '/sounds/page-turn.mp3'; // Add this file to your public directory
 const AUDIO_DATA = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAASAAAJhwBJSUlJSUlJSUlJbW1tbW1tbW1tbW2JiYmJiYmJiYmJicXFxcXFxcXFxcXF4uLi4uLi4uLi4uLi//////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAZtAAAAAAAACYflGyTKAAAAAAD/+9DEAAAInINXtBGAJQ9Qaq8CMBEATUDSmZiCm3y4EdKfhjHxj6GQA1H0xHgcuL/5c5znOc9CHA4sQEJw/8uIGH4H4Pj4+X8vbggIPggAAAAABAMAYDAcD/KAgIHw/D4IAAAAAIBAIKqqqqqgJ36jzGTTqbMx+lVTEFNRTMuOTkuNaqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqTEFNRTMuOTkuNaqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//swxKGAKhoLXbmMAAVDQOs3MYAAAAANIAAAAAA';
 
 // Debug logging with timestamps

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Page from '@/components/Page';
 import InfoModal from '@/components/InfoModal';
-import { books, Book, Poem } from '@/data/poems';
+import { getAllBooks, Book, Poem } from '@/data/poems';
 import { clamp } from '@/utils/illustrations';
 import { initPageTurnSound, playPageTurnSound } from '@/utils/sound';
 import styles from '@/styles/BookPage.module.css';
@@ -15,16 +15,18 @@ export default function Home() {
   const [isFlipping, setIsFlipping] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
-  const [currentBookId, setCurrentBookId] = useState<string>(books[0].id);
-  const [currentBook, setCurrentBook] = useState<Book>(books[0]);
-  const [poems, setPoems] = useState<Poem[]>(books[0].poems);
+  const allBooks = getAllBooks();
+    const firstBook = allBooks.length>0 ? allBooks[0] : allBooks[0];
+    const [currentBookId, setCurrentBookId] = useState<string>(firstBook.id);
+  const [currentBook, setCurrentBook] = useState<Book>(firstBook);
+  const [poems, setPoems] = useState<Poem[]>(firstBook.poems);
 
   // Book container ref for flipping animation
   const bookRef = React.useRef<HTMLDivElement>(null);
 
   // Update book and poems when currentBookId changes
   useEffect(() => {
-    const book = books.find(b => b.id === currentBookId) || books[0];
+    const book = allBooks.find(b => b.id === currentBookId) || firstBook;
     setCurrentBook(book);
     setPoems(book.poems);
     setPageIndex(0); // Reset to first page when changing books
@@ -55,7 +57,7 @@ export default function Home() {
 
       // Book selection
       const savedBookId = localStorage.getItem('selectedBookId');
-      if (savedBookId && books.some(book => book.id === savedBookId)) {
+      if (savedBookId && allBooks.some(book => book.id === savedBookId)) {
         setCurrentBookId(savedBookId);
       }
     }
@@ -71,8 +73,8 @@ export default function Home() {
 
       // Number keys for quick book selection (1-9)
       const keyNum = parseInt(e.key);
-      if (!isNaN(keyNum) && keyNum >= 1 && keyNum <= books.length) {
-        handleSelectBook(books[keyNum - 1].id);
+      if (!isNaN(keyNum) && keyNum >= 1 && keyNum <= allBooks.length) {
+        handleSelectBook(allBooks[keyNum - 1].id);
       }
     };
     window.addEventListener('keydown', handleKeyDown);

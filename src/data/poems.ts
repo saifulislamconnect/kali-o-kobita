@@ -285,7 +285,11 @@ export const books: Book[] = [
 
 // Helper function to get all poems across all books
 export function getAllPoems(): Poem[] {
-  return books.flatMap(book => book.poems);
+    return books.flatMap(book => book.poems);
+}
+
+export function getAllBooks(): Book[] {
+    return books;
 }
 
 // Helper function to get poems for a specific book by ID

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Book, books } from '@/data/poems';
+import {getAllBooks} from '@/data/poems';
 import styles from '@/styles/BookPage.module.css';
 
 interface BookSelectorProps {
@@ -11,7 +11,9 @@ export default function BookSelector({ currentBookId, onSelectBook }: BookSelect
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  const currentBook = books.find(book => book.id === currentBookId) || books[0];
+  const allBooks = getAllBooks();
+  const firstBook = allBooks.length>0 ? allBooks[0] : null;
+  const currentBook = allBooks.find(book => book.id === currentBookId) || firstBook;
 
   // Handle click outside to close dropdown
   React.useEffect(() => {
@@ -63,7 +65,7 @@ export default function BookSelector({ currentBookId, onSelectBook }: BookSelect
           role="listbox"
           onClick={(e) => e.stopPropagation()} // Prevent clicks inside dropdown from closing it
         >
-          {books.map(book => (
+          {allBooks.map(book => (
             <div 
               key={book.id}
               className={`${styles.bookOption} ${book.id === currentBookId ? styles.selected : ''}`}
